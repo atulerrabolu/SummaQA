@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<title>SummaQA</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="wrapper" >
+		<center>
+			<!-- Input Textboxes -->
+			<div class="input">
+				<font color="white" size="7">SummaQA</font>
+				<form action="" method="post">
+					<div class="search-wrapper">
+						<div class="search-input">
+							<input type="text" placeholder="Enter a topic"name="topic" value="{{request.form['topic']}}">
+							<div class="icon"><i class="fas fa-search"></i></div>
+						</div>
+					</div>
+					<p></p>
+					<textarea rows="10" cols="50" placeholder="Enter your list of questions"class="textbox" name="questions">{{request.form['questions']}}</textarea>
+					<p></p>			
+					<button class="btn-hover color-9" type="submit">Search</button>
+
+				</form>
+			</div>
+
+			<!-- Summary Results -->
+			<div class="summary">
+				<font color="white" size="6">Summary</font>
+				<p></p>
+				<textarea rows="20" cols="100" readonly>
+					{% if summary %}
+						{{summary}}
+					{% endif %}
+				</textarea>
+			</div>
+		</center>
+	</div>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+{% endblock %}
